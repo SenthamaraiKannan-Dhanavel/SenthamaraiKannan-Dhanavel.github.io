@@ -28,12 +28,12 @@ A modern, responsive portfolio website showcasing my skills, experience, and pro
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/SenthamaraiKannan-Dhanavel/portfolio.git
+   git clone https://github.com/SenthamaraiKannan-Dhanavel/SenthamaraiKannan-Dhanavel.github.io.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd portfolio
+   cd SenthamaraiKannan-Dhanavel.github.io
    ```
 
 3. Open `index.html` in your browser to view the website locally
@@ -41,7 +41,7 @@ A modern, responsive portfolio website showcasing my skills, experience, and pro
 ## Project Structure
 
 ```
-portfolio/
+/
 ├── index.html
 ├── 404.html
 ├── README.md
@@ -57,7 +57,7 @@ portfolio/
 
 ## Deployment
 
-The website is deployed using GitHub Pages and can be accessed at: [GitHub Site Demo](https://senthamaraikannan-dhanavel.github.io/portfolio/)
+The website is deployed using GitHub Pages and can be accessed at: [GitHub Site Demo](https://senthamaraikannan-dhanavel.github.io/)
 
 ## Contributing
 
