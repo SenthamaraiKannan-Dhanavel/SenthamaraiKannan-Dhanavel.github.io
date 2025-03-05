@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 - Page Not Found</title>
+  
+  <!-- Include the same CSS files as main site for consistency -->
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/dark-mode.css"/>
+  
+  <style>
+    .error-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+      background: var(--background-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .error-container::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        var(--primary-color) 0%,
+        transparent 20%,
+        transparent 80%,
+        var(--accent-color) 100%
+      );
+      opacity: 0.1;
+      animation: rotate 20s linear infinite;
+      z-index: 0;
+    }
+
+    .error-content {
+      position: relative;
+      z-index: 1;
+      background: var(--secondary-color);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      max-width: 600px;
+      width: 90%;
+    }
+
+    .error-code {
+      font-size: 8rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 0;
+      line-height: 1;
+      background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 2s infinite;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    .error-code:hover {
+      transform: scale(1.05);
+    }
+
+    .error-title {
+      font-size: 2rem;
+      color: var(--text-color);
+      margin: 20px 0;
+    }
+
+    .error-message {
+      color: var(--text-color);
+      opacity: 0.8;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(107, 70, 193, 0.3);
+    }
+
+    .error-icon {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Dark mode toggle button */
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary-color);
+      border: 1px solid var(--border-color);
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 6rem;
+      }
+      
+      .error-title {
+        font-size: 1.5rem;
+      }
+      
+      .error-icon {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle" title="Toggle Dark Mode">
+    <svg id="sun-icon" width="30" height="30" style="display: block;" fill="black">
+      <circle cx="15" cy="15" r="6" fill="currentColor" />
+      <line
+        id="ray"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        x1="15"
+        y1="1"
+        x2="15"
+        y2="4"
+      ></line>
+      <use href="#ray" transform="rotate(45 15 15)" />
+      <use href="#ray" transform="rotate(90 15 15)" />
+      <use href="#ray" transform="rotate(135 15 15)" />
+      <use href="#ray" transform="rotate(180 15 15)" />
+      <use href="#ray" transform="rotate(225 15 15)" />
+      <use href="#ray" transform="rotate(270 15 15)" />
+      <use href="#ray" transform="rotate(315 15 15)" />
+    </svg>
+    <svg id="moon-icon" width="24" height="24" style="display: none;" fill="currentColor">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+
+  <div class="error-container">
+    <div class="error-content">
+      <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M7.5 7.5l3 3M10.5 7.5l-3 3"/>
+        <path d="M13.5 7.5l3 3M16.5 7.5l-3 3"/>
+        <path d="M8 16s2-2 4-2 4 2 4 2"/>
+      </svg>
+      <h1 class="error-code">404</h1>
+      <h2 class="error-title">Page Not Found</h2>
+      <p class="error-message">
+        Oops! Looks like you've ventured into uncharted territory. 
+        The page you're looking for might have moved or doesn't exist.
+      </p>
+      <a href="index.html" class="back-home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 12l6-6M3 12l6 6"/>
+        </svg>
+        Return Home
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Dark mode toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+
+    // Check for saved theme preference or default to light mode
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      
+      // Update icons
+      sunIcon.style.display = isDarkMode ? 'none' : 'block';
+      moonIcon.style.display = isDarkMode ? 'block' : 'none';
+      
+      // Save preference
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+
+    // Easter Egg: Console ASCII Art
+    console.log(`
+    Found the easter egg! Here's a smile for you 😃! 🎉
+
+    ⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣤⣤⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡀⠀⠀⠀⠀
+    ⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀
+    ⠀⢀⣾⣿⡿⠿⠛⠛⠛⠉⠉⠉⠛⠛⠛⠿⠿⣿⣿⣿⣿⣷⡀⠀
+    ⠀⣾⣿⣿⣇⠀⣀⣀⣠⣤⣤⣤⣤⣀⣀⠀⠀⠀⠈⠙⠻⣿⣷⠀
+    ⢠⣿⣿⣿⣿⡿⠿⠟⠛⠛⠛⠛⠛⠻⠿⢿⣿⣶⣤⣀⣠⣿⣿⡄
+    ⢸⣿⣿⣿⣿⣇⣀⣀⣤⣤⣤⣤⣤⣄⣀⣀⣽⣿⣿⣿⣿⣿⣿⡇
+    ⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃
+    ⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀
+    ⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀
+    ⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀
+
+    Hey there, curious developer! 👋
+    Since you found this easter egg, here's a hint:
+    Try typing 'konami()' in the console for another surprise!
+    `);
+
+    // Konami Code Easter Egg
+    let konamiCode = '';
+    const secretCode = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba';
+
+    document.addEventListener('keydown', (e) => {
+      konamiCode += e.key;
+      if (konamiCode.length > secretCode.length) {
+        konamiCode = konamiCode.substring(1);
+      }
+      if (konamiCode === secretCode) {
+        console.log('🎮 Konami Code Activated! 🎮');
+        document.body.style.animation = 'rainbow 2s linear infinite';
+      }
+    });
+
+    // Function that can be called from console
+    window.konami = () => {
+      console.log(`
+        🌟 You found the secret function! 🌟
+        Here's another ASCII friend for you:
+
+        ⠀⣞⢽⢪⢣⢣⢣⢫⡺⡵⣝⡮⣗⢷⢽⢽⢽⣮⡷⡽⣜⣜⢮⢺⣜⢷⢽⢝⡽⣝
+        ⠸⡸⠜⠕⠕⠁⢁⢇⢏⢽⢺⣪⡳⡝⣎⣏⢯⢞⡿⣟⣷⣳⢯⡷⣽⢽⢯⣳⣫⠇
+        ⠀⠀⢀⢀⢄⢬⢪⡪⡎⣆⡈⠚⠜⠕⠇⠗⠝⢕⢯⢫⣞⣯⣿⣻⡽⣏⢗⣗⠏⠀
+        ⠀⠪⡪⡪⣪⢪⢺⢸⢢⢓⢆⢤⢀⠀⠀⠀⠀⠈⢊⢞⡾⣿⡯⣏⢮⠷⠁⠀⠀⠀
+        ⠀⠀⠀⠈⠊⠆⡃⠕⢕⢇⢇⢇⢇⢇⢏⢎⢎⢆⢄⠀⢑⣽⣿⢝⠲⠉⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⡿⠂⠠⠀⡇⢇⠕⢈⣀⠀⠁⠡⠣⡣⡫⣂⣿⠯⢪⠰⠂⠀⠀⠀⠀
+        ⠀⠀⠀⠀⡦⡙⡂⢀⢤⢣⠣⡈⣾⡃⠠⠄⠀⡄⢱⣌⣶⢏⢊⠂⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⢝⡲⣜⡮⡏⢎⢌⢂⠙⠢⠐⢀⢘⢵⣽⣿⡿⠁⠁⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠨⣺⡺⡕⡕⡱⡑⡆⡕⡅⡕⡜⡼⢽⡻⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⣼⣳⣫⣾⣵⣗⡵⡱⡡⢣⢑⢕⢜⢕⡝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⣴⣿⣾⣿⣿⣿⡿⡽⡑⢌⠪⡢⡣⣣⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⡟⡾⣿⢿⢿⢵⣽⣾⣼⣘⢸⢸⣞⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠁⠇⠡⠩⡫⢿⣝⡻⡮⣒⢽⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+        Try clicking the 404 number for one last surprise! 
+      `);
+    };
+
+    // Click Easter Egg on 404
+    const errorCode = document.querySelector('.error-code');
+    const errorIcon = document.querySelector('.error-icon');
+    
+    if (errorCode && errorIcon) {
+      errorCode.addEventListener('click', () => {
+        console.log('🎯 You found another easter egg!');
+        errorIcon.style.transform = 'rotate(360deg) scale(1.2)';
+        setTimeout(() => {
+          errorIcon.style.transform = '';
+        }, 1000);
+      });
+    }
+
+    // Add rainbow animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes rainbow {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Add this in your existing script tag, before the other scripts
+    document.addEventListener('DOMContentLoaded', () => {
+      // Update the home link to work with GitHub Pages
+      const isGitHubPages = window.location.hostname.includes('github.io');
+      const homeLink = document.querySelector('.back-home');
+      
+      if (isGitHubPages && homeLink) {
+        const repoName = window.location.pathname.split('/')[1];
+        homeLink.href = `/${repoName}/index.html`;
+      }
+    });
+  </script>
+</body>
+</html>

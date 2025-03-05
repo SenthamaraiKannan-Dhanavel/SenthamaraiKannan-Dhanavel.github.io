@@ -1,0 +1,340 @@
+/* Terminal Styling */
+.terminal-container {
+  width: 80%;
+  max-width: 700px;
+  margin: 30px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  font-family: 'Courier New', monospace;
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  text-align: left;
+}
+
+.terminal-header {
+  background-color: #3c3c3c;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  position: relative;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.close {
+  background-color: #ff5f56;
+}
+
+.terminal-button.minimize {
+  background-color: #ffbd2e;
+}
+
+.terminal-button.maximize {
+  background-color: #27c93f;
+}
+
+.terminal-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #ddd;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.terminal-content {
+  padding: 15px;
+  height: 400px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+#terminal-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.prompt {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.command-output {
+  display: block;
+  color: #f0f0f0;
+  margin: 5px 0;
+}
+
+.command-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.command-text {
+  margin-left: 5px;
+  min-height: 16px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background-color: #f0f0f0;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Ensure only the last cursor in the terminal is visible */
+.command-line:not(:last-child) .cursor {
+  display: none;
+}
+
+/* Dark mode adjustments */
+.dark-mode .terminal-container {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .terminal-container {
+    width: 95%;
+  }
+  
+  .terminal-content {
+    min-height: 150px;
+  }
+}
+
+/* Add these styles to your terminal.css file */
+.simulation-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 50px;
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.terminal, .api-simulation {
+  background: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  width: 100%;
+  margin: 10px;
+}
+
+.terminal-header {
+  background: #323232;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.close {
+  background: #ff5f56;
+}
+
+.terminal-button.minimize {
+  background: #ffbd2e;
+}
+
+.terminal-button.maximize {
+  background: #27c93f;
+}
+
+.terminal-title {
+  color: #ddd;
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+
+.terminal-content {
+  padding: 15px;
+  height: 400px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.log-output {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.prompt {
+  color: #4CAF50;
+  margin-right: 8px;
+}
+
+.command-output {
+  margin: 8px 0;
+  padding-left: 15px;
+  color: #bbb;
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { color: transparent; }
+  50% { color: #ddd; }
+}
+
+/* Dark mode adjustments */
+.dark-mode .terminal, .dark-mode .api-simulation {
+  background: #121212;
+}
+
+.dark-mode .terminal-header {
+  background: #1e1e1e;
+}
+
+.dark-mode .log-output {
+  color: #eee;
+}
+
+.dark-mode .command-output {
+  color: #ccc;
+}
+
+/* For smaller screens, make sure terminals stack properly */
+@media (max-width: 992px) {
+  .simulation-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .terminal, .api-simulation {
+    max-width: 100%;
+  }
+}
+
+/* Add these styles to match the About Me terminal */
+.simulation-container .terminal-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  background-color: #2d2d2d;
+}
+
+/* Ensure the terminal content has the same styling */
+.simulation-container .terminal-content {
+  min-height: 200px;
+  height: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Ensure command output has the same styling */
+.simulation-container .command-output {
+  display: block;
+  color: #f0f0f0;
+  margin: 5px 0;
+}
+
+/* Ensure command line has the same styling */
+.simulation-container .command-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* Ensure command text has the same styling */
+.simulation-container .command-text {
+  margin-left: 5px;
+}
+
+/* Ensure cursor has the same styling */
+.simulation-container .cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background-color: #f0f0f0;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+/* Add a max-height only for very long terminals to prevent excessive page length */
+@media (min-height: 1200px) {
+  .terminal-content {
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  
+  .simulation-container .terminal-content {
+    max-height: 600px;
+    overflow-y: auto;
+  }
+}
+
+/* Make sure both terminals have identical styling */
+.simulation-container .terminal-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  background-color: #2d2d2d;
+}
+
+/* Ensure consistent styling for both terminals */
+#server-logs, #api-response {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Courier New', monospace;
+}
+
+/* Ensure cursor styling is consistent */
+.simulation-container .cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background-color: #f0f0f0;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+/* Ensure only the last cursor in each terminal is visible */
+.command-line:not(:last-child) .cursor {
+  display: none !important;
+} 

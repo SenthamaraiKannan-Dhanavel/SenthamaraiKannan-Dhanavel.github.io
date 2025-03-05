@@ -1,0 +1,85 @@
+/* Dark Mode Styles */
+.dark-mode {
+  --background-color: #1a1625;    /* Dark purple background */
+  --text-color: #e9e4f0;          /* Light purple text */
+  --primary-color: #9f7aea;       /* Bright purple for primary */
+  --secondary-color: #2d2438;     /* Darker purple for cards */
+  --border-color: #4a3f61;        /* Medium purple borders */
+  --accent-color: #b794f4;        /* Light purple accent */
+  --gradient-start: #9f7aea;      /* Purple gradient start */
+  --gradient-end: #805ad5;        /* Purple gradient end */
+}
+
+/* Dark mode specific styles for cards */
+.dark-mode .card {
+  background: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .tech-tag {
+  background: rgba(159, 122, 234, 0.2);
+  color: #b794f4;
+}
+
+/* Dark mode specific styles for sections */
+.dark-mode .section {
+  background: var(--background-color);
+}
+
+/* Dark mode specific styles for navbar */
+.dark-mode .navbar.scrolled {
+  background: rgba(26, 32, 44, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode specific styles for skills */
+.dark-mode .skill-card {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .tag {
+  background: rgba(159, 122, 234, 0.1);
+  color: #b794f4;
+}
+
+.dark-mode .tooltip {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Dark mode specific styles for experience */
+.dark-mode .experience-card {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .course-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: #66b0ff;
+}
+
+.dark-mode .gpa {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode specific styles for contact */
+.dark-mode .contact-content {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .social-icon-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode specific styles for footer */
+.dark-mode .footer {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.dark-mode .footer::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+} 
