@@ -6,8 +6,8 @@
   <title>404 - Page Not Found</title>
   
   <!-- Include the same CSS files as main site for consistency -->
-  <link rel="stylesheet" href="/css/base.css"/>
-  <link rel="stylesheet" href="/css/dark-mode.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/dark-mode.css"/>
   
   <style>
     .error-container {
@@ -162,24 +162,6 @@
       }
     }
   </style>
-
-  <!-- Add this script in the head to handle path resolution -->
-  <script>
-    // Get the current domain
-    const domain = window.location.hostname;
-    
-    // Check if we're on GitHub Pages
-    const isGitHubPages = domain.includes('github.io');
-    
-    // If we're on GitHub Pages, update the CSS paths
-    if (isGitHubPages) {
-      document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-        if (link.href.startsWith('/css')) {
-          link.href = link.href.replace('/css', '/css');
-        }
-      });
-    }
-  </script>
 </head>
 <body>
   <button id="theme-toggle" title="Toggle Dark Mode">
@@ -222,11 +204,11 @@
         Oops! Looks like you've ventured into uncharted territory. 
         The page you're looking for might have moved or doesn't exist.
       </p>
-      <a href="/" class="back-home">
-        <svg class="home-icon" viewBox="0 0 24 24" width="24" height="24">
+      <a href="index.html" class="back-home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 12h18M3 12l6-6M3 12l6 6"/>
         </svg>
-        Return to Home
+        Return Home
       </a>
     </div>
   </div>
@@ -344,10 +326,13 @@
 
     // Add this in your existing script tag, before the other scripts
     document.addEventListener('DOMContentLoaded', () => {
+      // Update the home link to work with GitHub Pages
+      const isGitHubPages = window.location.hostname.includes('github.io');
       const homeLink = document.querySelector('.back-home');
-      if (homeLink) {
-        // Set the correct home URL
-        homeLink.href = window.location.hostname.includes('github.io') ? '/' : '/';
+      
+      if (isGitHubPages && homeLink) {
+        const repoName = window.location.pathname.split('/')[1];
+        homeLink.href = `/${repoName}/index.html`;
       }
     });
   </script>

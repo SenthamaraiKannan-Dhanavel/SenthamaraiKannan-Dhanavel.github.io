@@ -683,36 +683,38 @@ function simulateTerminalTyping(terminalElement, interactions) {
 
 // Update the handle404 function
 function handle404() {
-  // Get the current URL parts
+  const validPaths = ['/', '/index.html', '/404.html'];
   const currentPath = window.location.pathname;
-  const hostname = window.location.hostname;
   
   // Check if we're on GitHub Pages
-  const isGitHubPages = hostname.includes('github.io');
+  const isGitHubPages = window.location.hostname.includes('github.io');
+  
+  // Get the repository name if on GitHub Pages
+  const repoName = isGitHubPages ? window.location.pathname.split('/')[1] : '';
+  
+  // Add repository path to valid paths if on GitHub Pages
+  if (isGitHubPages) {
+    validPaths.push(`/${repoName}`);
+    validPaths.push(`/${repoName}/`);
+    validPaths.push(`/${repoName}/index.html`);
+  }
   
   // Don't redirect if we're on localhost or file:// protocol
-  if (window.location.protocol === 'file:' || 
-      hostname === 'localhost' || 
-      hostname === '127.0.0.1') {
+  if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     return;
   }
-
-  // Define valid paths
-  const validPaths = ['/', '/index.html', '/404.html'];
   
-  // If we're on the main GitHub Pages site
-  if (isGitHubPages && hostname === 'senthamaraikannan-dhanavel.github.io') {
-    // Only redirect if the path is not valid
-    if (!validPaths.includes(currentPath)) {
-      window.location.href = '/404.html';
-    }
-  } 
-  // If we're trying to access the portfolio subdirectory
-  else if (currentPath.startsWith('/portfolio')) {
-    // Redirect to the main site
-    window.location.href = 'https://senthamaraikannan-dhanavel.github.io/';
+  // Only redirect if we're not already on index.html or root
+  const isIndexOrRoot = currentPath === '/' || 
+                       currentPath.endsWith('index.html') || 
+                       currentPath === `/${repoName}` || 
+                       currentPath === `/${repoName}/` ||
+                       currentPath === `/${repoName}/index.html`;
+                       
+  if (!isIndexOrRoot && !validPaths.includes(currentPath)) {
+    window.location.href = isGitHubPages ? `/${repoName}/404.html` : '/404.html';
   }
 }
 
-// Call handle404 when the page loads
+// Call this when the page loads
 document.addEventListener('DOMContentLoaded', handle404);
