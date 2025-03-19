@@ -718,3 +718,30 @@ function handle404() {
 
 // Call this when the page loads
 document.addEventListener('DOMContentLoaded', handle404);
+
+// Add this near the top of your script.js file
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navbarMenu = document.querySelector('.navbar ul');
+  
+  if (menuToggle && navbarMenu) {
+    menuToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.navbar')) {
+        navbarMenu.classList.remove('show');
+      }
+    });
+
+    // Close menu when clicking a link
+    navbarMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navbarMenu.classList.remove('show');
+      });
+    });
+  }
+});

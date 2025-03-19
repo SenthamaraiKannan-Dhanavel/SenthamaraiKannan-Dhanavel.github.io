@@ -25,14 +25,21 @@
 <body>
   <!-- Navigation Bar -->
   <nav class="navbar">
-    <ul>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-left">
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </button>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
     <button id="theme-toggle" title="Toggle Dark Mode">
       <svg id="sun-icon" width="30" height="30" style="display: block;" fill="black">
         <circle cx="15" cy="15" r="6" fill="currentColor" />
@@ -153,17 +160,16 @@
         </div>
         <div class="experience-content">
           <div class="experience-description">
-            <p>Spearheaded the development of a real-time financial analytics dashboard using React.js, enabling businesses to visualize key financial metrics with 40% faster data retrieval.</p>
+            <p>Integrated OpenAI APIs to develop an AI-powered customer support chatbot, reducing manual query resolution time by 35%.</p>
             <ul class="responsibility-list">
-              <li>Designed Spring Boot-based microservices architecture, ensuring scalable API interactions and asynchronous event-driven communication via Kafka</li>
-              <li>Integrated OpenAI APIs to develop an AI-powered customer support chatbot, reducing manual query resolution time by 35%</li>
-              <li>Upgraded security measures by implementing Log4j vulnerability patches, ensuring secure logging practices and compliance with cybersecurity standards</li>
-              <li>Developed RESTful APIs in Node.js/Express.js, optimizing request-response cycles and improving API performance by 20%</li>
-              <li>Deployed containerized services using Docker and Kubernetes, ensuring high availability, automated scaling, and fault tolerance on AWS (EC2, S3)</li>
-              <li>Automated CI/CD pipelines via Jenkins and GitHub Actions, cutting down deployment time by 25% and enhancing build quality using SonarQube static code analysis</li>
-              <li>Optimized PostgreSQL queries in AWS RDS, reducing query execution time by 18% through indexing and query caching</li>
-              <li>Implemented JWT-based authentication and OAuth2, strengthening API security and ensuring HIPAA-compliant user access control</li>
-              <li>Refactored a monolithic order management system into microservices, achieving 30% improvement in system resilience and easier code maintainability</li>
+              <li>Deployed containerized services using Docker and Kubernetes, ensuring high availability, automated scaling, and fault tolerance on AWS (EC2, S3).</li>
+              <li>Led the integration of MuleSoft for efficient API management and system interoperability, reducing data integration times by 40% and improving overall application connectivity.</li>
+              <li>Designed and implemented frontend solutions using React.js and Redux, enhancing user experience, reducing page load times by 25%, and ensuring a consistent user interface.</li>
+              <li>Optimized SQL database interactions for better performance, reducing query response times by 20% and ensuring data integrity across the system.</li>
+              <li>Designed Spring Boot-based microservices architecture, ensuring scalable API interactions and asynchronous event-driven communication via Kafka.</li>
+              <li>Worked with Active Record, RoR's Object-R elational Mapping (ORM) system, for managing databases like PostgreSQL and MySQL, creating efficient queries, and handling migrations and database optimizations.</li>
+              <li>Automated CI/CD pipelines via Jenkins and GitHub Actions, cutting down deployment time by 25% and enhancing build quality using SonarQube static code analysis.</li>
+              <li>Optimized PostgreSQL queries in AWS RDS, reducing query execution time by 18% through indexing and query caching.</li>
             </ul>
           </div>
           <div class="tech-stack">
@@ -199,8 +205,8 @@
           </div>
           <div class="experience-title">
             <h3>Software Engineer</h3>
-            <h4 class="company-name">CaratLane</h4>
-            <div class="experience-date">May 2019 - Jul 2022</div>
+            <h4 class="company-name">Hexaware Technologies</h4>
+            <div class="experience-date">Jan 2022 - Jul 2024</div>
           </div>
         </div>
         <div class="experience-content">

@@ -59,10 +59,86 @@
 
 /* Ensure the button is fully visible */
 #theme-toggle {
-  margin-left: 0; /* Remove auto margin */
+  margin-right: 50px;
 }
 
 /* Dark mode navbar */
 .dark-mode .navbar.scrolled {
   background: rgba(26, 22, 37, 0.95);
+}
+
+/* Menu toggle is hidden by default */
+.navbar .menu-toggle {
+  display: none !important; /* Force hide on desktop */
+}
+
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--text-color);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .navbar .menu-toggle {
+    display: block !important;
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .navbar ul {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(248, 247, 252, 0.95);
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  .navbar ul.show {
+    display: flex;
+  }
+
+  .navbar ul li {
+    width: 100%;
+  }
+
+  .navbar ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+  }
+
+  #theme-toggle {
+    margin-right: 10px;
+  }
+
+  /* Dark mode adjustments */
+  .dark-mode .navbar ul {
+    background: rgba(26, 22, 37, 0.95);
+  }
+}
+
+/* Add these new styles for the navbar layout */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
 } 
